@@ -1,0 +1,741 @@
+* {
+    font-family: "Teko", sans-serif;
+    font-family: "Rajdhani", sans-serif;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    overflow-x: hidden;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+
+}
+
+:root {
+    --bg-main: #0a0a0a;
+    --main-green: #00c781;
+    --hover: #00e69a;
+    --border: #1e1e1e;
+    --text-main: #ffffff;
+    --text-grey: #858585;
+}
+
+body {
+    background-color: var(--bg-main);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-main);
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--border);
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1000;
+    overflow: visible;
+}
+
+/* Bagian Logo */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-indicator {
+    width: 4px;
+    height: 28px;
+    background-color: var(--main-green);
+    border-radius: 2px;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.brand-title {
+    font-family: "Rajdhani", sans-serif;
+    overflow: hidden;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.brand-subtitle {
+    overflow: hidden;
+    font-family: "Rajdhani", sans-serif;
+    color: var(--main-green);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+/* Bagian Tengah (Dashboard) */
+.humburger-btn {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: var(--text-main);
+  background: none;
+  border: none;
+}
+.nav-menu {
+    display: flex;
+    align-items: center;
+    position: sticky;
+}
+
+.nav-link {
+    font-family: "Rajdhani", sans-serif;
+    display: inline-block;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.nav-link i {
+    color: var(--main-green);
+    font-size: 15px;
+}
+
+/* Bagian Kanan (Search & Button) */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    overflow: visible;
+}
+
+.search-box {
+    font-family: "Rajdhani", sans-serif;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 260px;
+    z-index: 1001;
+    overflow: visible;
+}
+
+.search-box input {
+    background-color: transparent;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 8px 35px 8px 15px;
+    color: var(--text-grey);
+    font-size: 13px;
+    outline: none;
+    width: 180px;
+    transition: all 0.3s ease;
+}
+
+.search-box input::placeholder {
+    font-family: "Rajdhani", sans-serif;
+    color: var(--text-grey);
+}
+
+.search-box input:focus {
+    border-color: var(--main-green);
+    width: 210px;
+}
+
+.search-box i {
+    position: absolute;
+    right: 12px;
+    color: var(--text-grey);
+    font-size: 14px;
+}
+
+#reportList {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background: var(--text-main);
+    z-index: 9999;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 2px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: none;
+}
+
+.report-item {
+      font-family: "Plus Jakarta sans", sans-serif;
+
+  font-size: 13px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+
+.btn-lapor {
+    text-decoration: none;
+    font-family: "Rajdhani", sans-serif;
+    background-color: var(--main-green);
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-lapor:hover {
+    background-color: var(--hover);
+}
+
+.dashboard-home {
+    padding: 30px 40px;
+    line-height: 1.2;
+    padding-bottom: 1px;
+    border-bottom: 1px solid var(--border);
+}
+
+.dashboard-home p {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 14px;
+    color: var(--text-main);
+    font-weight: 600;
+    overflow: hidden;
+}
+
+.green-text {
+    font-family: "Teko", sans-serif;
+    font-size: 9.6rem;
+    font-weight: 800;
+    color: var(--main-green);
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+/* Container untuk mengatur posisi card berdampingan */
+.stats-container {
+    display: flex;
+    gap: 16px;
+    padding: 20px 40px;
+}
+
+/* Style dasar untuk setiap Card */
+.stat-card {
+    background-color: #101010;
+    border: 1px solid var(--border);
+    padding: 24px 28px;
+    width: 100%;
+    min-height: 140px;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0.4rem 0.4rem 0.5rem var(--hover);
+}
+
+/* Style Teks Judul (Atas) */
+.stat-title {
+    color: var(--text-grey);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-family: "Teko", sans-serif;
+}
+
+/* Style Angka (Bawah) */
+.stat-value {
+    font-size: 6.8rem;
+    font-weight: 800;
+    margin: 10px 0 0 0;
+    line-height: 1;
+    font-family: "Teko", sans-serif;
+    overflow: hidden;
+}
+
+/* Warna Angka */
+.text-white {
+    color: var(--text-main);
+}
+
+.text-orange {
+    color: #ff7700;
+}
+
+/* data */
+/* Container Utama */
+.dashboard-container {
+  padding: 30px;
+  color: #ffffff;
+}
+
+/* Filter Tombol */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+.filter-btn {
+  font-family: 'Rajdhani', sans-serif;
+  background-color: #101010;
+  border: 1px solid var(--border);
+  color: var(--text-grey);
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn.active {
+  background-color: #101010;
+  border-color: var(--main-green);
+  color: var(--text-main);
+}
+
+/* Wrapper Tabel */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.report-table th {
+  color: var(--text-grey);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.report-table td {
+  padding: 18px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-grey);
+}
+
+/* Styling Kolom Pelapor */
+.pelapor-name {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.pelapor-sub {
+  font-size: 12px;
+  color: var(--text-grey);
+  margin-top: 2px;
+}
+
+/* Badge Status */
+    /* Gabungkan class badge dan tombol aksi agar memiliki standar ukuran yang sama */
+.badge, .btn-action {
+  display: inline-block;
+  min-width: 90px;      /* Atur lebar minimal yang sama untuk semua tombol/badge */
+  text-align: center;   /* Memastikan teks berada tepat di tengah */
+  padding: 6px 12px;    /* Sesuaikan padding atas-bawah dan kiri-kanan */
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  box-sizing: border-box; /* Memastikan padding tidak merusak ukuran total */
+}
+
+.badge.warning {
+  background-color: rgba(217, 107, 20, 0.15);
+  color: #ff7700;
+  border: 1px solid #ff7700;
+}
+
+.badge.success {
+  background-color: rgba(0, 255, 136, 0.1);
+  color: var(--main-green);
+  border: 1px solid var(--main-green);
+}
+
+/* Tombol Aksi */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-action {
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  transition: 0.2s;
+}
+
+.btn-action.success {
+  border: 1px solid var(--main-green);
+  color: var(--main-green);
+}
+
+.btn-action.danger {
+  border: 1px solid #bc1823;
+  color: #bc1823;
+}
+
+.btn-action.disabled {
+  border: 1px solid var(--border);
+  color: var(--text-grey);
+  cursor: not-allowed;
+}
+
+/* Efek teks coret untuk baris selesai tertentu */
+.text-strikethrough {
+  text-decoration: line-through;
+  color: var(--text-grey);
+}
+
+/* laporkan! */
+/* Container Utama (2 Kolom) */
+.report-page-container {
+  display: flex;
+  min-height: 100vh;
+  padding: 40px;
+  box-sizing: border-box;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Kolom Kiri */
+.report-left {
+  flex: 1;
+}
+
+.sub-title {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--main-green);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.main-title {
+  font-family: "Teko", sans-serif;
+  font-size: 6.8rem;
+  font-weight: 900;
+  letter-spacing: 15px;
+  line-height: 0.95;
+  margin: 15px 0 20px 0;
+  color: var(--text-main);
+  overflow: hidden;
+}
+
+.highlight-green {
+  font-family: "Teko", sans-serif;
+  color: var(--main-green);
+}
+
+.report-desc {
+  color: var(--text-grey);
+  font-size: 12.5px;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+/* Kolom Kanan (Form) */
+.report-right {
+  flex: 1;
+  background-color: #101010;
+  padding: 40px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-grey);
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+}
+
+/* Style Input & Select & Textarea */
+.form-input, .form-textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 10px 0;
+  font-size: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+  color: var(--text-grey);
+}
+
+.form-input:focus, .form-textarea:focus {
+  border-bottom-color: var(--main-green);
+}
+
+/* Styling Dropdown Option agar tetap gelap */
+.form-input option {
+  background-color: #101010;
+  color: var(--text-main);
+}
+
+.form-textarea {
+  resize: vertical;
+}
+
+/* Tombol Kirim */
+.btn-submit {
+  background: transparent;
+  border: 1.8px solid var(--main-green);
+  color: var(--main-green);
+  padding: 10px 28px;
+  border-radius: 30px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+}
+
+.btn-submit:hover {
+  background-color: var(--hover);
+  color: var(--text-main);
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  /* Menyembunyikan kolom pencarian pada layar 768px ke bawah */
+  .search-box input {
+    display: none;
+  }
+  .search-box i {
+    position: static;
+  }
+  .green-text {
+    font-size: 8.5rem;
+  }
+  .main-title {
+    font-size: 7rem;
+  }
+  .report-page-container {
+    display: block;
+  }
+  .sub-title {
+    font-size: 15px;
+  }
+  .report-right {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-indicator {
+    width: 4px;
+    height: 26px;
+}
+.brand-title {
+  font-size: 16px;
+}
+.brand-subtitle {
+  font-size: 7px;
+}
+.humburger-btn {
+  display: block;
+}
+.nav-menu, .nav-right {
+    display: none; 
+  }
+  .navbar {
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .navbar.active .nav-menu,
+  .navbar.active .nav-right {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    background-color: transparent;
+    padding: 15px 10px;
+    border-top: 1px solid var(--border); /* Garis pemisah tipis di atas menu */
+  }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    background: #101010;
+    padding: 8px 12px;
+    border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .search-box input {
+    display: flex;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #fff;
+    outline: none;
+  }
+
+  /* Rapikan tombol laporkan agar pas selebar menu */
+  .btn-lapor {
+    text-align: center;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .dashboard-home p {
+    font-size: 11px;
+  }
+  .green-text {
+    font-size: 5rem;
+  }
+  .stats-container {
+    display: block;
+    padding: 22px 18px;
+    box-sizing: border-box;
+  }
+  .stat-card {
+    margin-top: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .stat-title {
+    font-size: 10px ;
+  }
+  .stat-value {
+    font-size: 6rem;
+  }
+  .filter-btn {
+    font-size: 11px;
+  }
+  .report-table th {
+    font-size: 10px;
+  }
+  .report-table td {
+    font-size: 10px;
+  }
+  .pelapor-sub {
+    font-size: 10px;
+  }
+  .badge, .btn-action {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+  .sub-title {
+    font-size: 13px;
+  }
+  .form-group label {
+    font-size: 10px;
+  }
+  .form-input, .form-textarea {
+    font-size: 10px;
+  }
+  .btn-submit {
+    padding: 8px 26px;
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 360px) {
+   .brand-indicator {
+    width: 4px;
+    height: 23px;
+}
+.brand-title {
+  font-size: 14px;
+}
+.brand-subtitle {
+  font-size: 6px;
+}
+.humburger-btn {
+  font-size: 18px;
+}
+  .dashboard-home p {
+    font-size: 9px;
+  }
+  .stat-title {
+    font-size: 9px ;
+  }
+  .stat-value {
+    font-size: 5rem;
+  }
+  .filter-btn {
+    font-size: 9px;
+  }
+  .report-table th {
+    font-size: 9px;
+  }
+  .report-table td {
+    font-size: 9px;
+  }
+  .pelapor-sub {
+    font-size: 9px;
+  }
+  .badge, .btn-action {
+    padding: 3px 6px;
+    font-size: 9px;
+  }
+  .form-group label {
+    font-size: 9px;
+  }
+  .form-input, .form-textarea {
+    font-size: 9px;
+  }
+  .btn-submit {
+    padding: 6px 24px;
+    font-size: 10px;
+  }
+  .green-text {
+    font-size: 3.5rem;
+  }
+  .sub-title {
+    font-size: 13px;
+  }
+  .main-title {
+    font-size: 4.3rem;
+  }
+  .report-desc {
+    font-size: 10px;
+  }
+}

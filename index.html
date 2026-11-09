@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOXA</title>
+    <!-- remix icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+        integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- icon -->
+    <link rel="shortcut icon" href="Assets/chat-voice-line.svg" type="image/x-icon">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Rajdhani:wght@300;400;500;600;700&family=Teko:wght@300..700&display=swap"
+        rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <nav class="navbar">
+
+        <!-- Logo -->
+        <div class="nav-brand">
+            <div class="brand-indicator"></div>
+            <div class="brand-text">
+                <span class="brand-title">VOXA</span>
+                <span class="brand-subtitle">REPORTING SYSTEM</span>
+            </div>
+        </div>
+
+        <button class="humburger-btn">
+            <i class="ri-menu-line"></i>
+        </button>
+
+        <!-- Menu Dashboard -->
+
+        <div class="nav-menu">
+            <a href="#dashboard" class="nav-link">
+                <i class="ri-home-5-line"></i> DASHBOARD
+            </a>
+        </div>
+
+        <!-- Tombol Lapor -->
+        <div class="nav-right">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Cari Laporan...">
+                <i class="ri-search-line"></i>
+
+                <ul id="reportList">
+                    <li class="report-item">Laporan Kerusakan Komputer</li>
+                    <li class="report-item">Laporan Kursi Rusak</li>
+                    <li class="report-item">Laporan AC Bocor</li>
+                    <li class="report-item">Laporan Atap Bocor</li>
+                    <li class="report-item">Laporan Fasilitas Taman Rusak</li>
+                </ul>
+            </div>
+
+            <!-- Daftar laporan yang akan disaring -->
+
+            <a class="btn-lapor" href="#lapor">LAPORKAN</a>
+        </div>
+
+
+    </nav>
+    <!-- end nav -->
+
+    <main>
+        <!-- dashboard -->
+        <section id="dashboard">
+            <div class="dashboard-home">
+                <p>System Overview & Live Analytics</p>
+                <h1 class="green-text">dashboard.</h1>
+            </div>
+
+            <div class="stats-container">
+                <!-- card 1 -->
+                <div class="stat-card">
+                    <span class="stat-title">total laporan</span>
+                    <h2 class="stat-value text-white">05</h2>
+                </div>
+                <!-- card 2 -->
+                <div class="stat-card">
+                    <span class="stat-title">menunggu proses</span>
+                    <h2 class="stat-value text-orange">04</h2>
+                </div>
+            </div>
+
+            <!-- data -->
+            <div class="dashboard-container">
+
+                <!-- Filter Tombol di Atas -->
+                <div class="filter-buttons">
+                    <button class="filter-btn active">Semua (5)</button>
+                    <button class="filter-btn">Menunggu (4)</button>
+                    <button class="filter-btn">Selesai (1)</button>
+                </div>
+
+                <!-- Tabel Data -->
+                <div class="table-wrapper">
+                    <table class="report-table">
+                        <thead>
+                            <tr>
+                                <th>PELAPOR</th>
+                                <th>KATEGORI</th>
+                                <th>DESKRIPSI</th>
+                                <th>STATUS</th>
+                                <th>AKSI</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="reports-table-body">
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- laporkan -->
+        <section id="lapor">
+            <div class="report-page-container">
+
+                <!-- Kolom Kiri: Informasi / Judul -->
+                <div class="report-left">
+                    <span class="sub-title">What is the problem?</span>
+                    <h1 class="main-title">
+                        REPORT<br>
+                        <span class="highlight-green">IT.</span>
+                    </h1>
+                    <p class="report-desc">
+                        Laporkan kendala sarana & prasarana sekolah secara langsung untuk penanganan cepat oleh tim
+                        sarpras.
+                    </p>
+                </div>
+
+                <!-- Kolom Kanan: Form Input -->
+                <div class="report-right">
+                    <form id="facility-report-form" class="report-form" onsubmit="handleFormSubmit(event)">
+
+                        <!-- Input Pelapor -->
+                        <div class="form-group">
+                            <label>PELAPOR</label>
+                            <input type="text" id="input-reporter" name="reporter" placeholder="Nama Lengkap / Kelas" class="form-input" >
+                        </div>
+
+                        <!-- Input Kategori -->
+                        <div class="form-group">
+                            <label>KATEGORI</label>
+                            <select id="select-category" name="category" class="form-input" >
+                                <option value="" disabled selected>Pilih Kategori Kerusakan</option>
+                                <option value="ac">AC</option>
+                                <option value="komputer">Komputer</option>
+                                <option value="furnitur">Furnitur</option>
+                                <option value="kelistrikan">Kelistrikan</option>
+                                <option value="sanitasi">Sanitasi</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                        </div>
+
+                        <!-- Input Deskripsi -->
+                        <div class="form-group">
+                            <label>DESKRIPSI</label>
+                            <textarea id="description" placeholder="Jelaskan detail kerusakan fasilitas dan lokasinya..." 
+                                class="form-textarea" rows="4" maxlength="200" ></textarea>
+                        </div>
+
+                        <!-- Tombol Kirim -->
+                        <button type="submit" id="btn-submit-report" class="btn-submit">
+                            Kirim Laporan
+                            <i class="ri-arrow-right-long-fill"></i>
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- js -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/main.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+
+
+
+</html>
